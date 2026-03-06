@@ -267,37 +267,73 @@ _{Explain here how the data archiving feature will be implemented}_
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
+* at teaching position that need to manage contacts of students
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: 
+
+Focusing on the unique hierarchy of campus life:
+
+Mapping students by course codes, TAs by labs and tutorials.
+
+Allows a professor or teaching assistant to retrieve vital contact context or generate student lists quickly, ensuring that managing a massive network of names never interrupts the flow of deep work or teaching.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a …​                            | I want to …​                                           | So that I can…​                                                        |
+|----------|------------------------------------|--------------------------------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                           | see usage instructions                                 | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                               | add a new person                                       |                                                                        |
+| `* * *`  | user                               | delete a person                                        | remove entries that I no longer need                                   |
+| `* * *`  | user                               | find a person by name                                  | locate details of persons without having to go through the entire list |
+| `* * *`  | professor                          | add tags to contacts                                   | categorize students by course, tutorial, or lab                        |
+| `* *`    | professor that teach many students | sort persons by name                                   | locate a person easily                                                 |
+| `* *`    | professor that teach many courses  | search persons by tags                                 | locate details of persons in a course, tutorial, or lab easily         |
+| `* *`    | forgetful user                     | do fuzzy and partially maching search                  | locate a person without remembring the full name of that person        |
+| `*`      | professor that works in a group    | selectively import and export contacts in some formats | share contacts data with others                                        |
+| `* *`    | user                               | see contextual error messages when a command fails     | know what is the problem and fix it                                    |
+| `*`      | user                               | access my input history                                | run similar commands easily                                            |
+| `* *`    | sloppy user                        | double confirm some dangerous operations               | keep my contacts data safe from mistakes                               |
+| `*`      | sloppy user                        | undo some commands                                     | revert the effects of mistakes                                         |
+| `*`      | user                               | have some customized configuration options             | customize this software to improve my efficiency and comfort           |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `Doritus` and the **Actor** is the `user`, unless specified otherwise)
+
+**Use case: Add a person**
+
+**MSS**
+
+1.  User requests to add a person with all required details
+2.  System adds the person
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. User does not provide all required details.
+
+    * 1a1. System shows an error message.
+
+      Use case resumes at step 1.
+
+* 1b. User provides invalid details (e.g., invalid name format).
+
+    * 1b1. System shows an error message.
+
+      Use case resumes at step 1.
 
 **Use case: Delete a person**
 
 **MSS**
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  System shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  System deletes the person
 
     Use case ends.
 
@@ -309,11 +345,55 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. System shows an error message.
 
       Use case resumes at step 2.
 
-*{More to be added}*
+**Use case: see command instructions**
+
+**MSS**
+
+1. User requests to see instructions for a specific command
+2. System shows instructions for the command
+
+    Use case ends.
+
+**Extensions*
+
+* 1a. User does not specify a command.
+
+    * 1a1. System shows instructions for all commands.
+
+      Use case ends.
+
+* 1b. User specifies an invalid command.
+
+    * 1b1. System shows an error message.
+
+      Use case resumes at step 1.
+
+**Use case: find a person by name**
+
+**MSS**
+
+1.  User requests to find a person by name
+2.  System shows a list of persons whose names match the search query
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. User does not provide a search query.
+
+    * 1a1. System shows an error message.
+
+      Use case resumes at step 1.
+
+* 1b. User provides an invalid search query (e.g., invalid name format).
+
+    * 1b1. System shows an error message.
+
+      Use case resumes at step 1.
 
 ### Non-Functional Requirements
 
