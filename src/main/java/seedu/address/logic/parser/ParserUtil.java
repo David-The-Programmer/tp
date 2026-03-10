@@ -13,6 +13,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.tag.AbstractTag;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -105,7 +106,7 @@ public class ParserUtil {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
         if (!Tag.isValidTagName(trimmedTag)) {
-            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            throw new ParseException(AbstractTag.MESSAGE_CONSTRAINTS);
         }
         return new Tag(trimmedTag);
     }
