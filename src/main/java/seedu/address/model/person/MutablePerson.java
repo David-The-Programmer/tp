@@ -1,6 +1,5 @@
 package seedu.address.model.person;
 
-import java.util.Collections;
 import java.util.Set;
 
 import seedu.address.model.person.exceptions.ImmutableEscapedScopeException;
@@ -26,8 +25,8 @@ public class MutablePerson extends Person {
     // object cannot be modified in an outer scope
     private boolean isEditable = true;
 
-    protected MutablePerson(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        super(name, phone, email, address, tags);
+    protected MutablePerson(Name name, Phone phone, Email email, Username username, Role role, Set<Tag> tags) {
+        super(name, phone, email, username, role, tags);
     }
 
     public void setName(Name name) {
@@ -45,14 +44,19 @@ public class MutablePerson extends Person {
         this.email = email;
     }
 
-    public void setAddress(Address address) {
+    public void setUsername(Username username) {
         checkEditable();
-        this.address = address;
+        this.username = username;
+    }
+
+    public void setRole(Role role) {
+        checkEditable();
+        this.role = role;
     }
 
     public void setTags(Set<Tag> tags) {
         checkEditable();
-        this.tags = Collections.unmodifiableSet(tags);
+        this.tags = tags;
     }
 
     private void checkEditable() {

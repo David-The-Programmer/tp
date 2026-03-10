@@ -24,9 +24,9 @@ public class Person {
     protected Email email;
 
     // Data fields
-    private final Username username;
-    private final Role role;
-    private final Set<Tag> tags = new HashSet<>();
+    protected Username username;
+    protected Role role;
+    protected Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -135,7 +135,7 @@ public class Person {
      */
     public Person cloneInto(Consumer<MutablePerson> delegate) {
         requireNonNull(delegate);
-        var clonedPerson = new MutablePerson(name, phone, email, address, tags);
+        var clonedPerson = new MutablePerson(name, phone, email, username, role, tags);
         delegate.accept(clonedPerson);
         clonedPerson.markComplete();
         return clonedPerson;
