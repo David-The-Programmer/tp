@@ -34,10 +34,26 @@ public class FindCommand extends Command {
     private final TagsContainsTagPredicate tagPredicate;
     private final Predicate<Person> predicate;
 
+    /**
+     * Constructs a {@code FindCommand} to filter persons by name keywords only.
+     *
+     * @param namePredicate the predicate for matching persons by name keywords;
+     *                      cannot be null
+     */
     public FindCommand(NameContainsKeywordsPredicate namePredicate) {
         this(namePredicate, null);
     }
 
+    /**
+     * Constructs a {@code FindCommand} to filter persons by name keywords and/or tags.
+     * Both predicates are combined using AND logic, so persons must match both conditions
+     * (if both are provided).
+     *
+     * @param namePredicate the predicate for matching persons by name keywords;
+     *                      cannot be null
+     * @param tagPredicate  the predicate for matching persons by tags;
+     *                      can be null to filter by name keywords only
+     */
     public FindCommand(NameContainsKeywordsPredicate namePredicate, TagsContainsTagPredicate tagPredicate) {
         Predicate<Person> finalPredicate = x -> true;
         this.namePredicate = namePredicate;
