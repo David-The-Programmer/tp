@@ -11,5 +11,13 @@ public class TagTypeTest {
         TagType tagType = TagType.valueOf("TAG");
         assertEquals(TagType.TAG, tagType);
     }
+
+    @Test
+    public void testTagTypeGetUiPriority() {
+        assertEquals(999, TagType.TAG.getUiPriority());
+        assertEquals(0, TagType.COURSE.getUiPriority());
+        assertEquals(1, TagType.TUTORIAL.getUiPriority());
+        assertEquals(2, TagType.LAB.getUiPriority());
+    }
 }
 
