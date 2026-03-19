@@ -12,6 +12,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.TagFactoryTest;
 import seedu.address.model.tag.TagType;
 import seedu.address.model.tag.restricted.TagSchemaTest.TagSchemaStub;
 
@@ -162,21 +163,21 @@ public class RestrictedTagTest {
     @Test
     public void getTagType_courseSchema_returnsCourse() {
         var schema = new CourseTagSchema();
-        var tag = new RestrictedTag(schema, "course:CS2103T");
+        var tag = new RestrictedTag(schema, TagFactoryTest.VALID_COURSE_FULL_TAG);
         assertEquals(TagType.COURSE, tag.getTagType());
     }
 
     @Test
     public void getTagType_tutorialSchema_returnsTutorial() {
         var schema = new TutorialTagSchema();
-        var tag = new RestrictedTag(schema, "tut:D24");
+        var tag = new RestrictedTag(schema, TagFactoryTest.VALID_TUTORIAL_FULL_TAG);
         assertEquals(TagType.TUTORIAL, tag.getTagType());
     }
 
     @Test
     public void getTagType_labSchema_returnsLab() {
         var schema = new LabTagSchema();
-        var tag = new RestrictedTag(schema, "lab:D24");
+        var tag = new RestrictedTag(schema, TagFactoryTest.VALID_LAB_FULL_TAG);
         assertEquals(TagType.LAB, tag.getTagType());
     }
 
