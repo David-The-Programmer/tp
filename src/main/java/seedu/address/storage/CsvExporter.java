@@ -30,7 +30,7 @@ import seedu.address.model.person.TeachingStaff;
  */
 public class CsvExporter {
 
-    public static final String DEFAULT_FILE_PATH = "./data/export.csv";
+    public static final String DEFAULT_FILE_PATH = "./export.csv";
     public static final String HEADERS = "Name,Phone,Username,Email,Tags,Position,Availability\n";
 
     /**

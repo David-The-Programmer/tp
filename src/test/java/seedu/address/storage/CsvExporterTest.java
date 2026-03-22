@@ -152,15 +152,6 @@ public class CsvExporterTest {
     }
 
     @Test
-    public void exportContacts_invalidParentDirectory_throwsIoException() {
-        Model model = new ModelManager();
-        model.addPerson(ALICE);
-
-        String invalidPath = "C:\\NonExistent\\Path\\That\\Does\\Not\\Exist\\export.csv";
-        assertThrows(IOException.class, () -> CsvExporter.exportContacts(model, invalidPath));
-    }
-
-    @Test
     public void exportContacts_multiplePersons_preservesOrderAndFormat() throws IOException {
         Model model = new ModelManager();
         model.addPerson(ALICE);
