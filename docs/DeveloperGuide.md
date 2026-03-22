@@ -91,16 +91,23 @@ Here's a (partial) class diagram of the `Logic` component:
 
 <img src="images/LogicClassDiagram.png" width="550"/>
 
-The sequence diagrams below illustrate the interactions within the `Logic` component for two representative commands.
+The sequence diagrams below illustrate the interactions within the `Logic` component for representative commands.
 
-**Adding a student** (`execute("add n/John p/91234567 e/john@example.com u/john1")`):
+`execute("delete 1")`:
+
+![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
+</div>
+
+`execute("add n/John ...")`:
 
 ![Interactions Inside the Logic Component for the `add` Command](images/AddSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `AddCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
 </div>
 
-**Listing all contacts** (`execute("list")`):
+`execute("list")`:
 
 ![Interactions Inside the Logic Component for the `list` Command](images/ListSequenceDiagram.png)
 
