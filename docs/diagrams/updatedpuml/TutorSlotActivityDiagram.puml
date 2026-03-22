@@ -1,24 +1,24 @@
 @startuml
-skin rose
+!include ../style.puml
 skinparam ActivityFontSize 15
 skinparam ArrowFontSize 12
 
 start
 :Get person at given index\nfrom filtered list;
 
-if () then ([index out of bounds])
+if (Is index valid?) then ([index out of bounds])
     :Show error: invalid index;
     stop
 else ([valid index])
 endif
 
-if () then ([person is not TeachingStaff])
+if (Is person TeachingStaff?) then ([person is not TeachingStaff])
     :Show error: not teaching staff;
     stop
 else ([person is TeachingStaff])
 endif
 
-if () then ([time slot already exists])
+if (Does slot already exist?) then ([time slot already exists])
     :Show error: duplicate slot;
     stop
 else ([slot is new])

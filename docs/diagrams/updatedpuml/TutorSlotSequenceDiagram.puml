@@ -54,7 +54,7 @@ activate TutorSlotCommand
 TutorSlotCommand -> Model : getFilteredPersonList()
 activate Model
 
-Model --> TutorSlotCommand
+Model --> TutorSlotCommand : personList
 deactivate Model
 
 note right of TutorSlotCommand: Validates TeachingStaff type\nand no duplicate slot

@@ -32,13 +32,13 @@ deactivate AddressBookParser
 LogicManager -> TutorDashboardCommand : execute(m)
 activate TutorDashboardCommand
 
-TutorDashboardCommand -> Model : get all staff from address book
+TutorDashboardCommand -> Model : getAddressBook()
 activate Model
 
-note right of TutorDashboardCommand: Reads full (unfiltered) list\nto show all teaching staff
-
-Model --> TutorDashboardCommand
+Model --> TutorDashboardCommand : addressBook
 deactivate Model
+
+note right of TutorDashboardCommand: Reads full (unfiltered) list\nto show all teaching staff
 
 create CommandResult
 TutorDashboardCommand -> CommandResult
