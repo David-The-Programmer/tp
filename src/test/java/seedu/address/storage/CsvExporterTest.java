@@ -45,7 +45,7 @@ public class CsvExporterTest {
 
         String csv = CsvExporter.convertToCsv(student);
 
-        assertEquals("Student,John Doe,91234567,johndoe,john@example.com,,", csv);
+        assertEquals("Student,John Doe,91234567,johndoe,john@example.com,", csv);
     }
 
     @Test
@@ -200,12 +200,7 @@ public class CsvExporterTest {
 
         String csv = CsvExporter.convertToCsv(person);
         // Verify CSV format contains all required fields in correct order
-        assertTrue(csv.startsWith("Student,"));
-        assertTrue(csv.contains("Test Person"));
-        assertTrue(csv.contains("12345678"));
-        assertTrue(csv.contains("testuser"));
-        assertTrue(csv.contains("test@example.com"));
-        assertTrue(csv.contains("tag1"));
+        assertEquals("Student,Test Person,12345678,testuser,test@example.com,tag1", csv);
     }
 
     @Test

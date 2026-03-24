@@ -93,7 +93,7 @@ public class CsvExporter {
         String avail = "";
         if (person instanceof TeachingStaff staff) {
             sb.append(staff.getPosition() + ",");
-            avail = staff
+            avail = "," + staff
                     .getAvailability()
                     .stream()
                     .map(slot -> slot.toString())
@@ -108,7 +108,7 @@ public class CsvExporter {
         sb.append(person.getTags()
                 .stream()
                 .map(tag -> tag.getTagName())
-                .collect(Collectors.joining(";")) + ",");
+                .collect(Collectors.joining(";")));
         sb.append(avail);
         return sb.toString();
     }
