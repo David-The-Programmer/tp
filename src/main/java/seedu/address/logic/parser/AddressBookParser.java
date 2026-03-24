@@ -67,7 +67,7 @@ public class AddressBookParser {
         Command command = parseCommandWord(commandWord, arguments, userInput);
 
         if (COMMAND_WORDS_NEEDS_CONFIRMATION.contains(commandWord)) {
-            return new ConfirmationCommand(command);
+            return new ConfirmationCommand(userInput, command);
         } else {
             return command;
         }
