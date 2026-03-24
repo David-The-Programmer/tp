@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
-public class ConfirmationCommand extends Command {
+public class RequireConfirmationCommand extends Command {
 
     public static final String MESSAGE_REQUIRE_CONFIRMATION = """
             Are you sure you want to execute the following command?
@@ -14,7 +14,7 @@ public class ConfirmationCommand extends Command {
     private final String userInput;
     private final Command command;
 
-    public ConfirmationCommand(String userInput, Command command) {
+    public RequireConfirmationCommand(String userInput, Command command) {
         this.userInput = userInput;
         this.command = command;
     }

@@ -21,7 +21,7 @@ import seedu.address.logic.commands.ExportCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.ConfirmationCommand;
+import seedu.address.logic.commands.RequireConfirmationCommand;
 import seedu.address.logic.commands.StaffListCommand;
 import seedu.address.logic.commands.StudentListCommand;
 import seedu.address.logic.commands.TutorDashboardCommand;
@@ -67,7 +67,7 @@ public class AddressBookParser {
         Command command = parseCommandWord(commandWord, arguments, userInput);
 
         if (COMMAND_WORDS_NEEDS_CONFIRMATION.contains(commandWord)) {
-            return new ConfirmationCommand(userInput, command);
+            return new RequireConfirmationCommand(userInput, command);
         } else {
             return command;
         }

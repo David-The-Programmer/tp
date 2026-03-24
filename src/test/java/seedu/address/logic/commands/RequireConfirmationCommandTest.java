@@ -10,9 +10,9 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
 /**
- * Contains tests for {@code ConfirmationCommand}.
+ * Contains tests for {@code RequireConfirmationCommand}.
  */
-public class ConfirmationCommandTest {
+public class RequireConfirmationCommandTest {
     private Model model = new ModelManager();
     private Model expectedModel = new ModelManager();
 
@@ -21,36 +21,36 @@ public class ConfirmationCommandTest {
         String userInput = "clear";
         Command mockCommand = new ClearCommand();
         
-        ConfirmationCommand confirmationCommand = new ConfirmationCommand(userInput, mockCommand);
+        RequireConfirmationCommand requireConfirmationCommand = new RequireConfirmationCommand(userInput, mockCommand);
         
-        assertNotNull(confirmationCommand);
-        assertEquals(mockCommand, confirmationCommand.getCommand());
+        assertNotNull(requireConfirmationCommand);
+        assertEquals(mockCommand, requireConfirmationCommand.getCommand());
     }
 
     @Test
     public void execute_success() {
         String userInput = "clear";
         Command mockCommand = new ClearCommand();
-        ConfirmationCommand confirmationCommand = new ConfirmationCommand(userInput, mockCommand);
+        RequireConfirmationCommand requireConfirmationCommand = new RequireConfirmationCommand(userInput, mockCommand);
 
         String expectedFeedback = String.format(
-                ConfirmationCommand.MESSAGE_REQUIRE_CONFIRMATION,
+                RequireConfirmationCommand.MESSAGE_REQUIRE_CONFIRMATION,
                 userInput,
                 AnswerConfirmationCommand.COMMAND_WORD_YES,
                 AnswerConfirmationCommand.COMMAND_WORD_NO
         );
 
         CommandResult expectedCommandResult = new CommandResult(expectedFeedback);
-        assertCommandSuccess(confirmationCommand, model, expectedCommandResult, expectedModel);
+        assertCommandSuccess(requireConfirmationCommand, model, expectedCommandResult, expectedModel);
     }
 
     @Test
     public void execute_messageFormat_containsUserInput() throws Exception {
         String userInput = "special command input";
         Command mockCommand = new HelpCommand();
-        ConfirmationCommand confirmationCommand = new ConfirmationCommand(userInput, mockCommand);
+        RequireConfirmationCommand requireConfirmationCommand = new RequireConfirmationCommand(userInput, mockCommand);
 
-        CommandResult result = confirmationCommand.execute(model);
+        CommandResult result = requireConfirmationCommand.execute(model);
         
         assertEquals(true, result.getFeedbackToUser().contains(userInput));
     }
@@ -59,9 +59,9 @@ public class ConfirmationCommandTest {
     public void execute_messageFormat_containsCommandWords() throws Exception {
         String userInput = "test input";
         Command mockCommand = new HelpCommand();
-        ConfirmationCommand confirmationCommand = new ConfirmationCommand(userInput, mockCommand);
+        RequireConfirmationCommand requireConfirmationCommand = new RequireConfirmationCommand(userInput, mockCommand);
 
-        CommandResult result = confirmationCommand.execute(model);
+        CommandResult result = requireConfirmationCommand.execute(model);
         String feedback = result.getFeedbackToUser();
         
         assertEquals(true, feedback.contains(AnswerConfirmationCommand.COMMAND_WORD_YES));

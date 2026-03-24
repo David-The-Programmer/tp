@@ -11,7 +11,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AnswerConfirmationCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ConfirmationCommand;
+import seedu.address.logic.commands.RequireConfirmationCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -53,8 +53,8 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
 
-        if (command instanceof ConfirmationCommand confirmationCommand) {
-            this.pendingCommand = confirmationCommand.getCommand();
+        if (command instanceof RequireConfirmationCommand requireConfirmationCommand) {
+            this.pendingCommand = requireConfirmationCommand.getCommand();
         } else if (command instanceof AnswerConfirmationCommand answerConfirmationCommand) {
             if (pendingCommand == null) {
                 throw new CommandException("No pending command to answer for.");
