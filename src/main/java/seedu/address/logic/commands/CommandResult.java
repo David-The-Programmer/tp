@@ -19,7 +19,7 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
-    /** The application would not reset {@Code pendingCommand} */
+    /** The application would not reset the pending command */
     private final boolean pending;
 
     /**
