@@ -62,7 +62,8 @@ public class FindPersonDescriptorTest {
     public void toStringMethod() {
         FindPersonDescriptor fd = new FindPersonDescriptor();
         String expected = FindPersonDescriptor.class.getCanonicalName() + "{name="
-                + fd.getName().orElse(null) + ", phone="
+                + fd.getName().orElse(null) + ", username="
+                + fd.getUsername().orElse(null) + ", phone="
                 + fd.getPhone().orElse(null) + ", email="
                 + fd.getEmail().orElse(null) + ", tags="
                 + fd.getTags().orElse(null) + "}";

@@ -189,6 +189,7 @@ public class FindCommand extends Command {
             }
 
             return Objects.equals(name, otherFindPersonDescriptor.name)
+                    && Objects.equals(username, otherFindPersonDescriptor.username)
                     && Objects.equals(phone, otherFindPersonDescriptor.phone)
                     && Objects.equals(email, otherFindPersonDescriptor.email)
                     && Objects.equals(tags, otherFindPersonDescriptor.tags);
@@ -198,6 +199,7 @@ public class FindCommand extends Command {
         public String toString() {
             return new ToStringBuilder(this)
                     .add("name", name)
+                    .add("username", username)
                     .add("phone", phone)
                     .add("email", email)
                     .add("tags", tags)
