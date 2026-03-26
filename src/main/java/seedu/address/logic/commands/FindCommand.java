@@ -55,6 +55,7 @@ public class FindCommand extends Command {
 
         Predicate<Person> predicate = findPersonDescriptor.getNamePredicate()
                 .and(findPersonDescriptor.getEmailPredicate())
+                .and(findPersonDescriptor.getUsernamePredicate())
                 .and(findPersonDescriptor.getTagsPredicate());
 
         model.updateFilteredPersonList(predicate);
