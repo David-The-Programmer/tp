@@ -1,0 +1,13 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+annotation FunctionalInterface << annotation >>
+class NameContainsKeywordsPredicate
+interface Predicate<T> << interface >>
+
+NameContainsKeywordsPredicate  -[#008200,dashed]-^  Predicate
+Predicate                      -[#999900,dotted]-  FunctionalInterface
+@enduml
