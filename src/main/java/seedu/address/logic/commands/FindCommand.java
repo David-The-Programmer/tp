@@ -150,7 +150,9 @@ public class FindCommand extends Command {
         }
 
         public Predicate<Person> getUsernamePredicate() {
-            return (username != null) ? new UsernameContainsKeywordsPredicate(new ArrayList<>(username)) : PREDICATE_TRUE;
+            return (username != null)
+                    ? new UsernameContainsKeywordsPredicate(new ArrayList<>(username))
+                    : PREDICATE_TRUE;
         }
 
         /**
