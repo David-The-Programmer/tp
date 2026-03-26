@@ -139,8 +139,8 @@ public class FindCommandTest {
         fd.setEmail(Set.of("cornelia"));
         FindCommand command = new FindCommand(fd);
         expectedModel.updateFilteredPersonList(
-                person -> fd.getNamePredicate().test(person) && fd.getTagsPredicate().test(person) &&
-                        fd.getEmailPredicate().test(person));
+                person -> fd.getNamePredicate().test(person) && fd.getTagsPredicate().test(person)
+                        && fd.getEmailPredicate().test(person));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Collections.singletonList(DANIEL), model.getFilteredPersonList());
     }
