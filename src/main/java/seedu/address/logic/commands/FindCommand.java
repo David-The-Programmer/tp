@@ -107,11 +107,21 @@ public class FindCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public FindPersonDescriptor(FindPersonDescriptor toCopy) {
-            setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setUsername(toCopy.username);
-            setTags(toCopy.tags);
+            if (toCopy.name != null) {
+                setName(toCopy.name);
+            }
+            if (toCopy.phone != null) {
+                setPhone(toCopy.phone);
+            }
+            if (toCopy.email != null) {
+                setEmail(toCopy.email);
+            }
+            if (toCopy.username != null) {
+                setUsername(toCopy.username);
+            }
+            if (toCopy.tags != null) {
+                setTags(toCopy.tags);
+            }
         }
 
         private Set<String> cleanArgs(Set<String> raw) {

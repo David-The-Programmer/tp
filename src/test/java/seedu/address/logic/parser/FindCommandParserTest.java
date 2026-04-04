@@ -136,7 +136,7 @@ public class FindCommandParserTest {
     }
 
     @Test
-    public void parse_ArgsWithEmpty_Values() {
+    public void parse_argsWithEmptyValues_returnsFindCommand() {
         // Only empty values
         FindPersonDescriptor fd = new FindPersonDescriptor();
         FindCommand expectedFindCommand = new FindCommand(fd);
