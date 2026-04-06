@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -35,6 +36,17 @@ public class ExportCommandTest {
 
         String expectedMessage = String.format(ExportCommand.MESSAGE_SUCCESS, filePath);
         assertEquals(expectedMessage, result.getFeedbackToUser());
+    }
+
+    @Test
+    public void execute_invalidFilePath_throwsCommandException() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        String invalidFilePath = "<bad>.csv";
+
+        ExportCommand exportCommand = new ExportCommand(invalidFilePath);
+
+        CommandException thrown = assertThrows(CommandException.class, () -> exportCommand.execute(model));
+        assertEquals(ExportCommand.MESSAGE_IO_EXCEPTION, thrown.getMessage());
     }
 
     @Test
