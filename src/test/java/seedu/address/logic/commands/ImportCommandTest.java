@@ -66,7 +66,7 @@ public class ImportCommandTest {
     }
 
     @Test
-    public void execute_EmptyCsvFile_throwsCommandException() {
+    public void execute_emptyCsvFile_throwsCommandException() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
         String csv = "";
@@ -76,14 +76,13 @@ public class ImportCommandTest {
         ImportCommand importCommand = new ImportCommand(filePath.toString());
         assertThrows(
                 CommandException.class,
-                ImportCommand.MESSAGE_DESERIALISE_EXCEPTION,
-                () -> importCommand.execute(model)
+                ImportCommand.MESSAGE_DESERIALISE_EXCEPTION, () -> importCommand.execute(model)
         );
     }
 
 
     @Test
-    public void execute_NoHeaderRowCsvFile_throwsCommandException() {
+    public void execute_noHeaderRowCsvFile_throwsCommandException() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
         String aliceCsvRep = "Student,";
@@ -102,14 +101,13 @@ public class ImportCommandTest {
         ImportCommand importCommand = new ImportCommand(filePath.toString());
         assertThrows(
                 CommandException.class,
-                ImportCommand.MESSAGE_DESERIALISE_EXCEPTION,
-                () -> importCommand.execute(model)
+                ImportCommand.MESSAGE_DESERIALISE_EXCEPTION, () -> importCommand.execute(model)
         );
     }
 
 
     @Test
-    public void execute_InvalidHeaderRowCsvFile_throwsCommandException() {
+    public void execute_invalidHeaderRowCsvFile_throwsCommandException() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
         String aliceCsvRep = "Student,";
@@ -130,8 +128,7 @@ public class ImportCommandTest {
         ImportCommand importCommand = new ImportCommand(filePath.toString());
         assertThrows(
                 CommandException.class,
-                ImportCommand.MESSAGE_DESERIALISE_EXCEPTION,
-                () -> importCommand.execute(model)
+                ImportCommand.MESSAGE_DESERIALISE_EXCEPTION, () -> importCommand.execute(model)
         );
     }
 
