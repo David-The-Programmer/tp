@@ -53,6 +53,31 @@ public class ExportCommandTest {
     }
 
     @Test
+    @EnabledOnOs({OS.LINUX})
+    public void execute_invalidFilePathLinux_throwsCommandException() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        // Test with null character which is invalid in Linux file paths
+        String invalidFilePath = "test" + '\0' + ".csv";
+
+        ExportCommand exportCommand = new ExportCommand(invalidFilePath);
+
+        CommandException thrown = assertThrows(CommandException.class, () -> exportCommand.execute(model));
+        assertEquals(ExportCommand.MESSAGE_IO_EXCEPTION, thrown.getMessage());
+    }
+
+    @Test
+    public void execute_missingDirectory_throwsCommandException() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        // Test with a path to a non-existent directory
+        String missingDirPath = "/nonexistent/directory/contacts.csv";
+
+        ExportCommand exportCommand = new ExportCommand(missingDirPath);
+
+        CommandException thrown = assertThrows(CommandException.class, () -> exportCommand.execute(model));
+        assertEquals(ExportCommand.MESSAGE_IO_EXCEPTION, thrown.getMessage());
+    }
+
+    @Test
     public void execute_defaultFilePath_success() throws CommandException {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         String filePath = CsvExporter.DEFAULT_FILE_PATH;
