@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -138,14 +139,19 @@ public class FindCommand extends Command {
             }
         }
 
-        private Set<String> cleanArgs(Set<String> raw, String regex) {
+        private boolean validate(String s, String regex, String message) {
+            checkArgument(s.matches(regex), message);
+            return true;
+        }
+
+        private Set<String> cleanArgs(Set<String> raw, String regex, String message) {
             return raw.stream()
-                    .filter(x -> !x.isEmpty() && x.matches(regex))
+                    .filter(x -> !x.isEmpty() && validate(x, regex, message))
                     .collect(Collectors.toSet());
         }
 
         public void setName(Set<String> name) {
-            name = cleanArgs(name, Name.VALIDATION_REGEX);
+            name = cleanArgs(name, Name.VALIDATION_REGEX, Name.MESSAGE_FIND_NAME_VALIDATE_ERROR);
             if (!name.isEmpty()) {
                 this.name = name;
             }
@@ -160,7 +166,7 @@ public class FindCommand extends Command {
         }
 
         public void setPhone(Set<String> phone) {
-            phone = cleanArgs(phone, Phone.FIND_SEQUENCE_REGEX);
+            phone = cleanArgs(phone, Phone.FIND_SEQUENCE_REGEX, Phone.MESSAGE_FIND_PHONE_VALIDATE_ERROR);
             if (!phone.isEmpty()) {
                 this.phone = phone;
             }
@@ -175,7 +181,7 @@ public class FindCommand extends Command {
         }
 
         public void setEmail(Set<String> email) {
-            email = cleanArgs(email, Email.SUBSTRING_VALIDATION_REGEX);
+            email = cleanArgs(email, Email.SUBSTRING_VALIDATION_REGEX, Email.MESSAGE_FIND_EMAIL_VALIDATE_ERROR);
             if (!email.isEmpty()) {
                 this.email = email;
             }
@@ -190,7 +196,7 @@ public class FindCommand extends Command {
         }
 
         public void setUsername(Set<String> username) {
-            username = cleanArgs(username, Username.VALIDATION_REGEX);
+            username = cleanArgs(username, Username.VALIDATION_REGEX, Username.MESSAGE_FIND_USERNAME_VALIDATE_ERROR);
             if (!username.isEmpty()) {
                 this.username = username;
             }
