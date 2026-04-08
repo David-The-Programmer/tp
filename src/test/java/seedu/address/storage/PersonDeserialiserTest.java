@@ -161,6 +161,13 @@ public class PersonDeserialiserTest {
     }
 
     @Test
+    public void deserialise_noPhoneFieldWithCommaAfterNameField_throwsDeserialisePersonException() {
+        String personStrRep = "Student,\"Prof Alice\",";
+        PersonDeserialiser deserialiser = new PersonDeserialiser(personStrRep);
+        assertThrows(DeserialisePersonException.class, () -> deserialiser.deserialise());
+    }
+
+    @Test
     public void deserialise_noUsernameField_throwsDeserialisePersonException() {
         String personStrRep = "Student,\"Prof Alice\",91111111";
         PersonDeserialiser deserialiser = new PersonDeserialiser(personStrRep);
