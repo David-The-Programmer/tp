@@ -140,10 +140,6 @@ public class FindCommand extends Command {
                     .collect(Collectors.toSet());
         }
 
-        private Set<String> cleanArgs(Set<String> raw) {
-            return this.cleanArgs(raw, "^\\S+$");
-        }
-
         public void setName(Set<String> name) {
             name = cleanArgs(name, Name.VALIDATION_REGEX);
             if (!name.isEmpty()) {
