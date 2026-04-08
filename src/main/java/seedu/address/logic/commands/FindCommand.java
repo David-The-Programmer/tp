@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.*;
 import seedu.address.model.person.predicate.EmailContainsKeywordsPredicate;
 import seedu.address.model.person.predicate.NameContainsKeywordsPredicate;
 import seedu.address.model.person.predicate.PhoneContainsSequencePredicate;
@@ -134,14 +134,18 @@ public class FindCommand extends Command {
             }
         }
 
-        private Set<String> cleanArgs(Set<String> raw) {
+        private Set<String> cleanArgs(Set<String> raw, String regex) {
             return raw.stream()
-                    .filter(x -> !x.isEmpty())
+                    .filter(x -> !x.isEmpty() && x.matches(regex))
                     .collect(Collectors.toSet());
         }
 
+        private Set<String> cleanArgs(Set<String> raw) {
+            return this.cleanArgs(raw, "^\\S+$");
+        }
+
         public void setName(Set<String> name) {
-            name = cleanArgs(name);
+            name = cleanArgs(name, Name.VALIDATION_REGEX);
             if (!name.isEmpty()) {
                 this.name = name;
             }
@@ -156,7 +160,7 @@ public class FindCommand extends Command {
         }
 
         public void setPhone(Set<String> phone) {
-            phone = cleanArgs(phone);
+            phone = cleanArgs(phone, Phone.FIND_SEQUENCE_REGEX);
             if (!phone.isEmpty()) {
                 this.phone = phone;
             }
@@ -171,7 +175,7 @@ public class FindCommand extends Command {
         }
 
         public void setEmail(Set<String> email) {
-            email = cleanArgs(email);
+            email = cleanArgs(email, Email.SUBSTRING_VALIDATION_REGEX);
             if (!email.isEmpty()) {
                 this.email = email;
             }
@@ -186,7 +190,7 @@ public class FindCommand extends Command {
         }
 
         public void setUsername(Set<String> username) {
-            username = cleanArgs(username);
+            username = cleanArgs(username, Username.VALIDATION_REGEX);
             if (!username.isEmpty()) {
                 this.username = username;
             }

@@ -25,11 +25,17 @@ public class Email {
     private static final String ALPHANUMERIC_NO_UNDERSCORE = "[^\\W_]+"; // alphanumeric characters except underscore
     private static final String LOCAL_PART_REGEX = "^" + ALPHANUMERIC_NO_UNDERSCORE + "([" + SPECIAL_CHARACTERS + "]"
             + ALPHANUMERIC_NO_UNDERSCORE + ")*";
+    private static final String LOCAL_SUBSTRING_REGEX = "([" + SPECIAL_CHARACTERS + "]?" + ALPHANUMERIC_NO_UNDERSCORE +
+            ")" + "*[" + SPECIAL_CHARACTERS + "]?";
     private static final String DOMAIN_PART_REGEX = ALPHANUMERIC_NO_UNDERSCORE
             + "(-" + ALPHANUMERIC_NO_UNDERSCORE + ")*";
+    private static final String DOMAIN_SUBSTRING_REGEX = "([.-]?" + ALPHANUMERIC_NO_UNDERSCORE + ")*[.-]?";
     private static final String DOMAIN_LAST_PART_REGEX = "(" + DOMAIN_PART_REGEX + "){2,}$"; // At least two chars
     private static final String DOMAIN_REGEX = "(" + DOMAIN_PART_REGEX + "\\.)*" + DOMAIN_LAST_PART_REGEX;
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@" + DOMAIN_REGEX;
+
+    public static final String SUBSTRING_VALIDATION_REGEX = "^(?=.)(" + LOCAL_SUBSTRING_REGEX + "|"
+            + DOMAIN_SUBSTRING_REGEX + "|" + LOCAL_SUBSTRING_REGEX + "@" + DOMAIN_SUBSTRING_REGEX + ")$";
 
     public final String value;
 
