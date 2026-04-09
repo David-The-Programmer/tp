@@ -29,12 +29,11 @@ public class Name {
     }
 
     private static String initValidationRegex() {
-        String block = "[a-zA-Z0-9/,']+";
-        String separator = "[ -]";
+        String mid = "[a-zA-Z0-9/,']";
 
-        return "^" + block + "(?:" + separator + block + ")*"
-                + "(?: \\(" + block + "(?:" + separator + block + ")*\\))?"
-                + "$";
+        String segment = "[a-zA-Z0-9](?:" + "(?:" + mid + "|(?:[ -](?![ -])))*" + "[a-zA-Z0-9])?";
+
+        return "^" + segment + "(?: \\(" + segment + "\\))?$";
     }
 
     private static String getNameConstraintsMessage() {
@@ -42,7 +41,7 @@ public class Name {
                 + "- Use only letters, numbers, and symbols: / , - ' ( )\n"
                 + "- Cannot be empty or only whitespace.\n"
                 + "- Use only a single space or hyphen between words.\n"
-                + "- Do not start or end with a space or hyphen.\n"
+                + "- Must only start and end with alphanumeric character.\n"
                 + "- Parentheses must be at the end, properly ordered (), and non-empty.\n"
                 + "- Examples:\n"
                 + "  - John Doe\n"
