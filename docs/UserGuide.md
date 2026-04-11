@@ -98,7 +98,8 @@ fast, Doritus can get your contact management tasks done faster than traditional
 * **Multiple contacts may share the same display name** (e.g. two different students both named `John Doe`) as long as
   their **phone**, **email**, and **username** are all distinct.
 * A contact is rejected as a **duplicate person** only if it has the **same identity** as someone already in the book:
-  same name, phone, email, and username, and—for teaching staff—the same `pos/` value. The error message is:
+  same name, phone, email, and username, and—for teaching staff—the same `pos/` value (compared **case-insensitively**;
+  stored as `Teaching Assistant` or `Professors`). The error message is:
   `This person already exists in the address book.`
 * **Phone**, **email**, and **username** must each remain unique across contacts: two people cannot share the same
   phone number, the same email (see below), or the same username.
@@ -109,8 +110,7 @@ fast, Doritus can get your contact management tasks done faster than traditional
 ### Types of tags
 
 - General purpose tags: Alphanumeric characters only (e.g. `examDuty`)
-- Special tags: these tags follow a specific format (matching is **case-sensitive**; use the patterns below exactly, e.g.
-  uppercase letters where shown)
+- Special tags: these tags follow a specific format:
     - Tutorial groups: begins with `tut:`, followed by an optional uppercase letter and maximally 2 digits (e.g.
       `tut:A11`, `tut:17`, `tut:2`)
     - Lab groups: begins with `lab:`, followed by an optional uppercase letter and maximally 2 digits (e.g. `lab:A11`,
@@ -199,8 +199,9 @@ Adds a teaching staff (tutor) to the address book.
   must start with `3`, `6`, `8`, or `9`. Must be unique.
 * `EMAIL`: Valid email format. Must be unique (see [Duplicate contacts](#duplicate-contacts)).
 * `USERNAME`: Alphanumeric only. Must be unique.
-* `POSITION`: Must be one of: `Teaching Assistant`, `Professors` (must match **exactly**, including spelling and
-  capitalisation). If omitted, defaults to `Teaching Assistant`.
+* `POSITION`: Must be one of: `Teaching Assistant`, `Professors` (spelling must match; **letter case is ignored**). The
+  app stores and displays the canonical form (`Teaching Assistant` or `Professors`). If omitted, defaults to
+  `Teaching Assistant`.
 * `TAG`: Optional; can be used multiple times. See [Types of tags](#types-of-tags) for more details.
 
 **Behavior:**
@@ -317,7 +318,8 @@ Edits an existing person in the address book. For teaching staff, you can also c
 
 * `INDEX`: Must be a positive integer (1, 2, 3, …​) referring to the position in the **currently displayed** list.
 * At least one optional field must be provided.
-* `pos/POSITION`: Only applies to teaching staff. Must be `Teaching Assistant` or `Professors`. Ignored for students.
+* `pos/POSITION`: Only applies to teaching staff. Must be `Teaching Assistant` or `Professors` (case-insensitive).
+  Ignored for students.
 
 **Behavior:**
 
@@ -548,8 +550,6 @@ the data from your previous Doritus home folder.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut
    `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to
    manually restore the minimized Help Window.
-3. **Course, tutorial, and lab tags** must follow the documented patterns **exactly**, including uppercase letters where
-   specified (see [Types of tags](#types-of-tags)).
 
 --------------------------------------------------------------------------------------------------------------------
 

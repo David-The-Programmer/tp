@@ -208,7 +208,8 @@ The address book holds a single list of `Person` objects. Two types of persons a
 * **Students** — base `Person` instances, added with `add n/NAME p/... e/... u/...`.
 * **Teaching staff** — `TeachingStaff` instances (extend `Person`) with an additional `Position` field. Added with
   `add staff n/NAME p/... e/... u/... [pos/POSITION]` where name, phone, email, username are mandatory and
-  `pos/POSITION` is optional. `Position` is restricted to "Teaching Assistant" or "Professors".
+  `pos/POSITION` is optional. `Position` is restricted to "Teaching Assistant" or "Professors" (input is matched
+  case-insensitively; the model stores the canonical spelling).
 
 Phone numbers are validated as Singapore numbers (`[3689]\\d{7}`): exactly 8 digits, starting with 3, 6, 8, or 9.
 
@@ -792,7 +793,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   contacts*), not an NUS ID.
 * **Teaching staff**: Persons represented by the `TeachingStaff` class (extends `Person`), with a `Position` field
   restricted to "Teaching Assistant" or "Professors". Added via `add staff`; listed via `staffslist` or `list`.
-* **Position**: The role of a teaching staff member; only "Teaching Assistant" and "Professors" are allowed.
+* **Position**: The role of a teaching staff member; only "Teaching Assistant" and "Professors" are allowed (user input
+  may use any letter case; stored values use the canonical spellings above).
 * **Tag**: A short label attached to a contact (e.g., module code, tutorial group, lab group) used for grouping and
   filtering contacts.
 * **Tutorial group / Lab group**: A subgroup of students within a module, usually associated with a specific weekly
