@@ -9,8 +9,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_POSITION_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME_BOB;
 import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
 import org.junit.jupiter.api.Test;
@@ -55,6 +57,23 @@ public class PersonTest {
         String nameWithExtraWord = VALID_NAME_BOB + " Jr";
         editedBob = new PersonBuilder(BOB).withName(nameWithExtraWord).build();
         assertFalse(BOB.isSamePerson(editedBob));
+    }
+
+    @Test
+    public void isSamePerson_teachingStaff() {
+        // two teaching staff with same identity and same position -> true
+        Person bobCopy = new PersonBuilder(BOB).build();
+        assertTrue(BOB.isSamePerson(bobCopy));
+
+        // same name, phone, email, username but different position -> false
+        Person bobOtherPosition = new PersonBuilder(BOB).withPosition(VALID_POSITION_AMY).build();
+        assertFalse(BOB.isSamePerson(bobOtherPosition));
+
+        // student vs teaching staff with same name, phone, email, username -> false
+        Person student = new PersonBuilder(AMY).build();
+        Person staffWithAmysFields = new PersonBuilder(AMY).withPosition(VALID_POSITION_AMY).build();
+        assertFalse(student.isSamePerson(staffWithAmysFields));
+        assertFalse(staffWithAmysFields.isSamePerson(student));
     }
 
     @Test
