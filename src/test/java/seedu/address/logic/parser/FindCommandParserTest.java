@@ -166,8 +166,18 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, " e/alice u/ p/", expectedFindCommand);
 
         fd = new FindPersonDescriptor();
+        fd.setName(Set.of("alice"));
+        expectedFindCommand = new FindCommand(fd);
+        assertParseSuccess(parser, " alice e/ u/ p/", expectedFindCommand);
+
+        fd = new FindPersonDescriptor();
         fd.setUsername(Set.of("aliceee"));
         expectedFindCommand = new FindCommand(fd);
         assertParseSuccess(parser, " e/ u/aliceee p/", expectedFindCommand);
+
+        fd = new FindPersonDescriptor();
+        fd.setTags(Set.of(new Tag("alice")));
+        expectedFindCommand = new FindCommand(fd);
+        assertParseSuccess(parser, " e/ u/ p/ t/alice", expectedFindCommand);
     }
 }
