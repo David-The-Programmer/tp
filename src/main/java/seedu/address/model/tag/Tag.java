@@ -49,6 +49,6 @@ public class Tag extends AbstractTag {
         if (!(other instanceof Tag otherTag)) {
             return false;
         }
-        return tagName.equalsIgnoreCase(otherTag.tagName) && getTagType() == otherTag.getTagType();
+        return tagName.toLowerCase().equals(otherTag.tagName.toLowerCase()) && getTagType() == otherTag.getTagType();
     }
 }
