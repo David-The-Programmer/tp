@@ -170,7 +170,7 @@ The `Model` component,
   the UI can be bound to this list so that the UI automatically updates when the data in the list change. Commands such
   as `list`, `staffslist`, and `studentslist` update this filter to show all persons, only teaching staff, or only
   students respectively.
-* stores a `UserPref` object that represents the userâ€™s preferences. This is exposed to the outside as a
+* stores a `UserPref` object that represents the user's preferences. This is exposed to the outside as a
   `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
   should make sense on their own without depending on other components)
@@ -487,7 +487,7 @@ The following sequence diagram shows how the user's answer (`Y` to confirm, `N` 
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a â€¦â€‹                            | I want to â€¦â€‹                                           | So that I canâ€¦â€‹                                                        |
+| Priority | As a ...                            | I want to ...                                           | So that I can...                                                        |
 |----------|------------------------------------|--------------------------------------------------------|------------------------------------------------------------------------|
 | `* * *`  | new user                           | see usage instructions                                 | refer to instructions when I forget how to use the Doritus             |
 | `* * *`  | user                               | add a new contact                                      | store **contact details** (name, phone, email, username, and optional tags) for future reference |
@@ -503,12 +503,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | sloppy user                        | double confirm some dangerous operations               | keep my contacts data safe from mistakes                               |
 | `*`      | sloppy user                        | undo some commands                                     | revert the effects of mistakes                                         |
 | `*`      | user                               | have some customized configuration options             | customize this software to improve my efficiency and comfort           |
-| `* *`    | professor                          | archive a completed semesterâ€™s cohort                  | start each new semester with a clean state                             |
+| `* *`    | professor                          | archive a completed semester's cohort                  | start each new semester with a clean state                             |
 | `*`      | professor                          | record short notes about students                      | recall important context when meeting them again in future semesters   |
 | `* *`    | tutor/professor                    | state when I am available to teach                     | specify my availability so students know when I can teach              |
 | `* *`    | tutor/professor                    | view the availability of all tutors in one place       | see who is able to teach at a glance                                   |
 
-**Note (student ID and â€œIDâ€ in user stories):** Doritus does **not** store or validate a separate NUS **Student ID** field; identity in the app is based on **name, phone, email, username** (and teaching-staff **position**), as described under *Duplicate contacts* in the User Guide and under **Student ID** in the [Glossary](#glossary) below. The **username** is the main user-chosen identifier analogous to an â€œIDâ€ in some workflows. There is **no** dedicated â€œsort by name or IDâ€ command: users narrow the list using **`find`** and the list commands (`list`, `staffslist`, `studentslist`).
+**Note (student ID and "ID" in user stories):** Doritus does **not** store or validate a separate NUS **Student ID** field; identity in the app is based on **name, phone, email, username** (and teaching-staff **position**), as described under *Duplicate contacts* in the User Guide and under **Student ID** in the [Glossary](#glossary) below. The **username** is the main user-chosen identifier analogous to an "ID" in some workflows. There is **no** dedicated "sort by name or ID" command: users narrow the list using **`find`** and the list commands (`list`, `staffslist`, `studentslist`).
 
 ### Use cases
 
@@ -637,8 +637,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The address book is empty.
 
-    * 1a1. Doritus shows an empty list with a message such as â€œNo contacts found. Add your first contact to get
-      started!â€.
+    * 1a1. Doritus shows an empty list with a message such as "No contacts found. Add your first contact to get
+      started!".
 
       Use case ends.
 
@@ -651,7 +651,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 4a. No contacts match the specified tutorial or lab group.
 
-    * 4a1. Doritus shows an empty list and a message such as â€œNo contacts found for this groupâ€.
+    * 4a1. Doritus shows an empty list and a message such as "No contacts found for this group".
     * 4a2. User may try a different group or adjust the filter.
 
       Use case resumes at step 3.

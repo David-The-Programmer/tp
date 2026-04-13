@@ -1,5 +1,4 @@
-﻿
----
+﻿---
 layout: page
 title: User Guide
 ---
@@ -436,7 +435,7 @@ Finds persons whose names contain any of the given keywords and/or who have any 
 * **Phone Sequence search:** Each `p/` value is a **digit-only** sequence used to search within stored phone numbers.
     * Each sequence must be **1 to 8 digits** (no spaces or other characters). Values with more than 8 digits are not
       accepted.
-    * Matching is by **substring** on the personâ€™s phone: e.g. `456` matches `91234567`.
+    * Matching is by **substring** on the person's phone: e.g. `456` matches `91234567`.
     * Persons whose phone matches at least one given sequence are returned (i.e. `OR` search across `p/` values).
 
 * **Combined search:** If multiple conditions are provided, persons must match at least one keyword in each condition (i.e. `AND` between conditions)
