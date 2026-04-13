@@ -73,8 +73,8 @@ fast, Doritus can get your contact management tasks done faster than traditional
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…¦`…‹ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…¦…‹` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items with `…`…‹ after them can be used multiple times including zero times.<br>
+  e.g. `[t/TAG]…` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -149,7 +149,7 @@ Format: `help`
 
 Adds a student to the address book.
 
-**Format:** `add n/NAME p/PHONE e/EMAIL u/USERNAME [t/TAG]…¦…‹`
+**Format:** `add n/NAME p/PHONE e/EMAIL u/USERNAME [t/TAG]…`
 
 **Parameters:**
 
@@ -187,7 +187,7 @@ Adds a student to the address book.
 
 Adds a teaching staff member to the address book.
 
-**Format:** `add staff n/NAME p/PHONE e/EMAIL u/USERNAME [pos/POSITION] [t/TAG]…¦…‹`
+**Format:** `add staff n/NAME p/PHONE e/EMAIL u/USERNAME [pos/POSITION] [t/TAG]…`
 
 **Parameters:**
 
@@ -277,7 +277,7 @@ available to teach.
 
 **Parameters:**
 
-* `INDEX`: Must be a positive integer (1, 2, 3, …¦) referring to the position of a **teaching staff member** in the
+* `INDEX`: Must be a positive integer (1, 2, 3, …) referring to the position of a **teaching staff member** in the
   **currently displayed** list. The person at that index must be a teaching staff member.
 * `SLOT`: Must be in format `DAY-START-END`, where:
     * `DAY` is one of: `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun` (case-insensitive).
@@ -349,11 +349,11 @@ Tutor Availability Dashboard (3 tutor(s)):
 
 Edits an existing person in the address book. For teaching staff, you can also change their position.
 
-**Format:** `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [u/USERNAME] [pos/POSITION] [t/TAG]…¦…‹`
+**Format:** `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [u/USERNAME] [pos/POSITION] [t/TAG]…`
 
 **Parameters:**
 
-* `INDEX`: Must be a positive integer (1, 2, 3, …¦…‹) referring to the position in the **currently displayed** list.
+* `INDEX`: Must be a positive integer (1, 2, 3, …) referring to the position in the **currently displayed** list.
 * At least one optional field must be provided.
 * `pos/POSITION`: Only applies to teaching staff. Must be `Teaching Assistant` or `Professors` (case-insensitive).
   Ignored for students.
@@ -379,7 +379,7 @@ Appends tags to an existing person, without having to respecify all existing tag
 
 **Parameters:**
 
-* `INDEX`: Must be a positive integer (1, 2, 3, …¦…‹) referring to the position in the **currently displayed** list.
+* `INDEX`: Must be a positive integer (1, 2, 3, …) referring to the position in the **currently displayed** list.
 * `TAG`: At least one must be provided. Can be used multiple times. See [Types of tags](#types-of-tags) for more
   details.
 
@@ -463,7 +463,7 @@ Deletes the specified person from the address book. Works for both students and 
 
 **Parameters:**
 
-* `INDEX`: Must be a positive integer (1, 2, 3, …¦…‹). Refers to the position in the **currently displayed** list.
+* `INDEX`: Must be a positive integer (1, 2, 3, …). Refers to the position in the **currently displayed** list.
 
 **Behavior:**
 
@@ -616,8 +616,8 @@ the data from your previous Doritus home folder.
 
 | Action                 | Format, Examples                                                                                                                                                                                                                 |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add student**        | `add n/NAME p/PHONE e/EMAIL u/USERNAME [t/TAG]…¦…‹` <br> e.g., `add n/James Ho p/82224345 e/jamesho@example.com u/jamesho t/friend`                                                                                                |
-| **Add staff**          | `add staff n/NAME p/PHONE e/EMAIL u/USERNAME [pos/POSITION] [t/TAG]…¦…‹` <br> e.g., `add staff n/Jane Smith p/91234567 e/jane@example.com u/janesmith` or `add staff n/Dr Lee p/91234567 e/lee@example.com u/drlee pos/Professors` |
+| **Add student**        | `add n/NAME p/PHONE e/EMAIL u/USERNAME [t/TAG]…` <br> e.g., `add n/James Ho p/82224345 e/jamesho@example.com u/jamesho t/friend`                                                                                                |
+| **Add staff**          | `add staff n/NAME p/PHONE e/EMAIL u/USERNAME [pos/POSITION] [t/TAG]…` <br> e.g., `add staff n/Jane Smith p/91234567 e/jane@example.com u/janesmith` or `add staff n/Dr Lee p/91234567 e/lee@example.com u/drlee pos/Professors` |
 | **List all**           | `list`                                                                                                                                                                                                                           |
 | **List staff only**    | `staffslist`                                                                                                                                                                                                                     |
 | **List students only** | `studentslist`                                                                                                                                                                                                                   |
