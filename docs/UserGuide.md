@@ -392,7 +392,7 @@ Finds persons whose names contain any of the given keywords and/or who have any 
 * **Email search:** Keywords match against person emails (case-insensitive)
     * Persons matching at least one keyword will be returned (i.e. `OR` search)
     * Keywords is matched using substring e.g. `mail` will match `example@gmail.com`
-    * Keywords should ensure that it is a valid substring for an emails
+    * Keywords should be a valid substring of an email
     * Refer to [`add`](#adding-a-student-add) command for constraints on emails
 
 * **Username search:** Keywords match against person username (case-insensitive)
