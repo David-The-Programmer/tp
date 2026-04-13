@@ -78,6 +78,9 @@ public class NameTest {
         assertTrue(Name.isValidName("Ronald O'Donald"));
         assertTrue(Name.isValidName("Soh La Min (Su La Min)"));
         assertTrue(Name.isValidName("Child S/O Father"));
+        assertTrue(Name.isValidName("Mr. Bean"));
+        assertTrue(Name.isValidName("J. R. R. Tolkien"));
+        assertTrue(Name.isValidName("Donald Trump Sr."));
     }
 
     @Test

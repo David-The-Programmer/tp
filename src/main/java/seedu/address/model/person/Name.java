@@ -29,9 +29,9 @@ public class Name {
     }
 
     private static String initValidationRegex() {
-        String mid = "[a-zA-Z0-9/,']";
+        String mid = "[a-zA-Z0-9/,'.]";
 
-        String segment = "[a-zA-Z0-9](?:" + "(?:" + mid + "|(?:[ -](?![ -])))*" + "[a-zA-Z0-9])?";
+        String segment = "[a-zA-Z0-9](?:" + "(?:" + mid + "|(?:[ -](?![ -])))*" + "[a-zA-Z0-9.])?";
 
         return "^" + segment + "(?: \\(" + segment + "\\))?$";
     }
