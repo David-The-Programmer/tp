@@ -470,7 +470,7 @@ Finds persons whose names contain any of the given keywords and/or who have any 
 * `find t/friends` — Returns all persons tagged with "friends"
 * `find t/colleagues t/important` — Returns all persons tagged with either "colleagues" or "important"
 * `find n/John t/friends` — Returns persons with "John" in their name who are also tagged with "friends"<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  ![result for 'find n/alex n/david'](images/findAlexDavidResult.png)
 
 ---
 
