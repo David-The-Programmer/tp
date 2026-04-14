@@ -402,7 +402,7 @@ The feature is implemented across the following components:
 * `CsvImporter` — Utility class responsible for:
     1. Reading from the csv file containing all the contacts.
     2. Adds all deserialised `Person` into the  model. Uses `CsvPersonDeserialiser#deserialise(personStrRep)` to deserialise each csv row representing a person.
-  3. 
+
 * `CsvPersonDeserialiser` - Utility class responsible for:
     1. Deserialising a csv representation string of a `Person` into a `Person` object.
 
